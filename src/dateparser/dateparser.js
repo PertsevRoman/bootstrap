@@ -232,10 +232,11 @@ angular.module('ui.bootstrap.dateparser', [])
     ];
 
     if (angular.version.major >= 1 && angular.version.minor > 4) {
+      var monthArray = $locale.DATETIME_FORMATS.STANDALONEMONTH || $locale.DATETIME_FORMATS.MONTH;
       formatCodeToRegex.push({
         key: 'LLLL',
-        regex: $locale.DATETIME_FORMATS.STANDALONEMONTH.join('|'),
-        apply: function(value) { this.month = $locale.DATETIME_FORMATS.STANDALONEMONTH.indexOf(value); },
+        regex: monthArray.join('|'),
+        apply: function(value) { this.month = monthArray.indexOf(value); },
         formatter: function(date) { return dateFilter(date, 'LLLL'); }
       });
     }
